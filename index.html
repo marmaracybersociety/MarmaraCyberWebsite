@@ -6,19 +6,22 @@
     <meta name="description" content="Marmara Üniversitesi Siber Güvenlik Kulübü (Marmara Cyber) resmi web sitesi ve doğrulama sayfası.">
     <meta name="keywords" content="Marmara Üniversitesi, Siber Güvenlik Kulübü, Marmara Cyber, marmaracyber, siber güvenlik, cybersecurity">
     <meta name="author" content="Marmara Üniversitesi Siber Güvenlik Kulübü">
-
+    
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://marmaracyber.com/">
     <meta property="og:title" content="Marmara Üniversitesi Siber Güvenlik Kulübü">
     <meta property="og:description" content="Marmara Üniversitesi Siber Güvenlik Kulübü (Marmara Cyber) resmi web sitesi ve doğrulama sayfası.">
-
+    
+    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://marmaracyber.com/">
     <meta property="twitter:title" content="Marmara Üniversitesi Siber Güvenlik Kulübü">
     <meta property="twitter:description" content="Marmara Üniversitesi Siber Güvenlik Kulübü (Marmara Cyber) resmi web sitesi ve doğrulama sayfası.">
 
     <title>Marmara Üniversitesi Siber Güvenlik Kulübü</title>
-
+    
+    <!-- Google Fonts: Space Grotesk & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -36,15 +39,17 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: #000;
             color: var(--text-primary);
             font-family: 'Space Grotesk', sans-serif;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
             position: relative;
         }
 
@@ -57,20 +62,135 @@
             z-index: 0;
         }
 
+        /* Navbar Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 75px;
+            z-index: 100;
+            background: rgba(8, 9, 12, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 242, 254, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 3rem;
+        }
+
+        .nav-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .nav-logo {
+            height: 38px;
+            width: auto;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+        }
+
+        .nav-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            background: linear-gradient(135deg, #ffffff 40%, var(--neon-blue) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: relative;
+            padding: 6px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--neon-blue);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background-color: var(--neon-blue);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 5px var(--neon-blue);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Section Layouts */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 100px 2rem 60px 2rem;
+        }
+
+        #hero {
+            z-index: 10;
+        }
+
+        #hakkimizda {
+            z-index: 10;
+        }
+
+        /* Cards Layout */
         main {
             position: relative;
-            z-index: 10;
             width: 90%;
             max-width: 680px;
-            padding: 3rem 2.5rem;
+            padding: 3.5rem 2.5rem;
             text-align: center;
-            background: transparent;
+            background: rgba(8, 9, 12, 0.75);
             border: 1px solid rgba(0, 242, 254, 0.25);
             border-radius: 16px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             box-shadow: 0 0 30px rgba(0, 242, 254, 0.06);
             animation: fade-in-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
+        .about-card {
+            position: relative;
+            width: 90%;
+            max-width: 780px;
+            padding: 3.5rem 3rem;
+            background: rgba(8, 9, 12, 0.75);
+            border: 1px solid rgba(0, 242, 254, 0.25);
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 0 30px rgba(0, 242, 254, 0.06);
+            animation: fade-in-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Corner Aesthetics */
         .corner {
             position: absolute;
             width: 12px;
@@ -95,6 +215,35 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        .about-card h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 40%, var(--neon-blue) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: left;
+        }
+
+        .about-divider {
+            width: 60px;
+            height: 2px;
+            background: var(--neon-blue);
+            margin-bottom: 2rem;
+            box-shadow: 0 0 8px var(--neon-blue);
+        }
+
+        .about-text {
+            color: #f1f5f9; /* High-contrast soft off-white for reading comfort */
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.85; /* Increased spacing for layout breathing room */
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8); /* Drop shadow to pop text from background */
         }
 
         .subtitle {
@@ -150,6 +299,116 @@
             transform: translateY(-2px);
         }
 
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(8, 9, 12, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: rgba(13, 15, 23, 0.95);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(0, 242, 254, 0.15);
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffffff 40%, var(--neon-blue) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .modal-content p {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .modal-close-btn {
+            background: rgba(0, 242, 254, 0.05);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            color: var(--text-primary);
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close-btn:hover {
+            background: var(--neon-blue);
+            color: #000000;
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+        }
+
+        .nav-link.active-link {
+            color: var(--neon-blue);
+        }
+        .nav-link.active-link::after {
+            width: 100%;
+        }
+
+        /* Language Toggle styling */
+        .lang-toggle {
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            display: inline-flex;
+            gap: 4px;
+            user-select: none;
+            text-decoration: none;
+            color: var(--text-secondary);
+        }
+        .lang-active {
+            color: var(--neon-blue);
+            text-shadow: 0 0 8px rgba(0, 242, 254, 0.4);
+            font-weight: 700;
+        }
+        .lang-separator {
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.85rem;
+        }
+
         @keyframes fade-in-up {
             from { opacity: 0; transform: translateY(20px); }
             to   { opacity: 1; transform: translateY(0); }
@@ -160,10 +419,43 @@
             50%      { background-color: var(--neon-blue); box-shadow: 0 0 8px var(--neon-blue); }
         }
 
+        /* Responsive Design */
         @media (max-width: 600px) {
+            header {
+                padding: 0 1rem;
+                height: 65px;
+            }
+            .nav-brand {
+                display: none;
+            }
+            .nav-logo {
+                height: 32px;
+            }
+            nav {
+                gap: 0.8rem;
+            }
+            .nav-link {
+                font-size: 0.75rem;
+            }
+            .lang-toggle {
+                font-size: 0.75rem;
+            }
+            section {
+                padding-top: 90px;
+            }
             main {
                 padding: 2.5rem 1.5rem;
                 width: 92%;
+            }
+            .about-card {
+                padding: 2.5rem 1.5rem;
+                width: 92%;
+            }
+            .about-card h2 {
+                font-size: 1.8rem;
+            }
+            .about-text {
+                font-size: 0.95rem;
             }
             h1 {
                 font-size: 1.8rem;
@@ -191,22 +483,180 @@
 </head>
 <body>
 
-    <main id="landing-card">
-        <div class="corner top-left"></div>
-        <div class="corner top-right"></div>
-        <div class="corner bottom-left"></div>
-        <div class="corner bottom-right"></div>
+    <!-- Header/Navbar -->
+    <header>
+        <a href="#hero" class="nav-logo-container">
+            <img src="assets/logo.png" alt="Marmara Cyber Logo" class="nav-logo">
+            <span class="nav-brand">MARMARA CYBER</span>
+        </a>
+        <nav>
+            <a href="#hero" class="nav-link active-link" data-translate="home">Ana Sayfa</a>
+            <a href="#hakkimizda" class="nav-link" data-translate="about">Hakkımızda</a>
+            <a href="#" class="nav-link" data-translate="blog" onclick="openComingSoon(event, 'Blog')">Blog</a>
+            <a href="#" class="nav-link" data-translate="chat" onclick="openComingSoon(event, 'Chat')">Chat</a>
+            <a href="#" class="nav-link lang-toggle" onclick="toggleLanguage(event)">
+                <span id="lang-tr" class="lang-active">TR</span><span class="lang-separator">/</span><span id="lang-en">EN</span>
+            </a>
+        </nav>
+    </header>
 
-        <h1 id="club-title">Marmara Üniversitesi Siber Güvenlik Kulübü</h1>
-        <p class="subtitle" id="site-subtitle">
-            Official Landing Page &mdash; <span class="domain-highlight">marmaracyber.com</span><span class="cursor"></span>
-        </p>
+    <!-- Hero Section -->
+    <section id="hero">
+        <main id="landing-card">
+            <div class="corner top-left"></div>
+            <div class="corner top-right"></div>
+            <div class="corner bottom-left"></div>
+            <div class="corner bottom-right"></div>
 
-        <div class="social-links">
-            <a href="https://www.linkedin.com/company/marmara-%C3%BCniversitesi-siber-g%C3%BCvenlik-kul%C3%BCb%C3%BC/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://www.instagram.com/marmarasiber.resmi/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <h1 id="club-title" data-translate="title">Marmara Üniversitesi Siber Güvenlik Kulübü</h1>
+            <p class="subtitle" id="site-subtitle">
+                <span data-translate="subtitle">Official Landing Page &mdash; </span><span class="domain-highlight">marmaracyber.com</span><span class="cursor"></span>
+            </p>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/company/marmara-%C3%BCniversitesi-siber-g%C3%BCvenlik-kul%C3%BCb%C3%BC/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://www.instagram.com/marmarasiber.resmi/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
+        </main>
+    </section>
+
+    <!-- Hakkımızda Section -->
+    <section id="hakkimizda">
+        <div class="about-card">
+            <div class="corner top-left"></div>
+            <div class="corner top-right"></div>
+            <div class="corner bottom-left"></div>
+            <div class="corner bottom-right"></div>
+
+            <h2 data-translate="aboutTitle">Hakkımızda</h2>
+            <div class="about-divider"></div>
+
+            <!-- BURAYA KULÜP HAKKINDA BİLGİ METNİ GELECEK -->
+            <p class="about-text" data-translate="aboutText">
+                Marmara Üniversitesi Siber Güvenlik Kulübü, dijital güvenliğe ilgi duyan herkesi tek çatı altında toplayan bir öğrenci topluluğudur. Amacımız, siber güvenlik dünyasına adım atmak isteyen arkadaşlarımıza rehberlik etmek, halihazırda bu alanda çalışan üyelerimizle bilgi alışverişi sağlamak ve güçlü bir ağ (network) oluşturmaktır. Teknik atölyeler, sektörden profesyonellerle buluşmalar ve kendi içimizde düzenlediğimiz pratik egzersizlerle, üyelerimizin kariyer yolculuklarına sağlam bir temel atıyoruz. Öğrenmeye hevesli herkesi aramızda görmekten mutluluk duyarız!
+            </p>
         </div>
-    </main>
+    </section>
+
+    <!-- Coming Soon Modal -->
+    <div id="coming-soon-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-icon">🚧</div>
+            <h3 data-translate="modalTitle">Coming Soon</h3>
+            <p data-translate="modalText">Görüntülemek istediğiniz <span id="modal-tab-name" class="domain-highlight"></span> modülü şu anda geliştirilme aşamasındadır.</p>
+            <button class="modal-close-btn" data-translate="modalClose" onclick="closeComingSoon()">Kapat</button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Multi-language, Scrollspy, and Modal -->
+    <script>
+        // Language Translations Data
+        const translations = {
+            tr: {
+                home: "Ana Sayfa",
+                about: "Hakkımızda",
+                blog: "Blog",
+                chat: "Chat",
+                title: "Marmara Üniversitesi Siber Güvenlik Kulübü",
+                subtitle: "Official Landing Page — ",
+                aboutTitle: "Hakkımızda",
+                aboutText: "Marmara Üniversitesi Siber Güvenlik Kulübü, dijital güvenliğe ilgi duyan herkesi tek çatı altında toplayan bir öğrenci topluluğudur. Amacımız, siber güvenlik dünyasına adım atmak isteyen arkadaşlarımıza rehberlik etmek, halihazırda bu alanda çalışan üyelerimizle bilgi alışverişi sağlamak ve güçlü bir ağ (network) oluşturmaktır. Teknik atölyeler, sektörden profesyonellerle buluşmalar ve kendi içimizde düzenlediğimiz pratik egzersizlerle, üyelerimizin kariyer yolculuklarına sağlam bir temel atıyoruz. Öğrenmeye hevesli herkesi aramızda görmekten mutluluk duyarız!",
+                modalTitle: "Coming Soon",
+                modalText: "Görüntülemek istediğiniz <span id=\"modal-tab-name\" class=\"domain-highlight\"></span> modülü şu anda geliştirilme aşamasındadır.",
+                modalClose: "Kapat"
+            },
+            en: {
+                home: "Home",
+                about: "About Us",
+                blog: "Blog",
+                chat: "Chat",
+                title: "Marmara University Cyber Security Club",
+                subtitle: "Official Landing Page — ",
+                aboutTitle: "About Us",
+                aboutText: "Marmara University Cyber Security Club is a student community that gathers everyone interested in digital security under one roof. Our goal is to guide students who want to step into the world of cybersecurity, facilitate knowledge exchange with our members already working in this field, and build a strong network. Through technical workshops, meetings with industry professionals, and practical exercises we organize internally, we establish a solid foundation for our members' career journeys. We are delighted to welcome anyone who is eager to learn!",
+                modalTitle: "Coming Soon",
+                modalText: "The <span id=\"modal-tab-name\" class=\"domain-highlight\"></span> module you wish to view is currently under development.",
+                modalClose: "Close"
+            }
+        };
+
+        let currentLang = 'tr';
+
+        // Toggle Language function
+        function toggleLanguage(event) {
+            event.preventDefault();
+            currentLang = currentLang === 'tr' ? 'en' : 'tr';
+            
+            // Translate all elements with data-translate attribute
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[currentLang][key]) {
+                    if (key === 'modalText') {
+                        element.innerHTML = translations[currentLang][key];
+                    } else {
+                        element.textContent = translations[currentLang][key];
+                    }
+                }
+            });
+
+            // Update Active Language Indicators
+            if (currentLang === 'tr') {
+                document.getElementById('lang-tr').classList.add('lang-active');
+                document.getElementById('lang-en').classList.remove('lang-active');
+            } else {
+                document.getElementById('lang-tr').classList.remove('lang-active');
+                document.getElementById('lang-en').classList.add('lang-active');
+            }
+        }
+
+        // Modal Controls
+        function openComingSoon(event, tabName) {
+            event.preventDefault();
+            const modal = document.getElementById('coming-soon-modal');
+            modal.classList.add('active');
+            
+            // Update the tab name inside the modal span dynamically
+            const modalTabNameSpan = document.getElementById('modal-tab-name');
+            if (modalTabNameSpan) {
+                modalTabNameSpan.innerText = tabName;
+            }
+        }
+
+        function closeComingSoon() {
+            const modal = document.getElementById('coming-soon-modal');
+            modal.classList.remove('active');
+        }
+
+        // Close modal when clicking outside the modal content box
+        window.onclick = function(event) {
+            const modal = document.getElementById('coming-soon-modal');
+            if (event.target === modal) {
+                closeComingSoon();
+            }
+        }
+
+        // Scrollspy for active link indication
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav .nav-link:not(.lang-toggle)');
+
+        window.addEventListener('scroll', () => {
+            let current = 'hero'; // Default to hero at the top
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 180)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active-link');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-link');
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
