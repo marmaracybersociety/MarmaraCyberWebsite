@@ -479,6 +479,25 @@
                 font-size: 1rem;
             }
         }
+
+        /* Footer Styles */
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 2.5rem 0;
+            border-top: 1px solid rgba(0, 242, 254, 0.15);
+            background: rgba(8, 9, 12, 0.4);
+            position: relative;
+            z-index: 10;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.05em;
+        }
     </style>
 </head>
 <body>
@@ -492,8 +511,8 @@
         <nav>
             <a href="#hero" class="nav-link active-link" data-translate="home">Ana Sayfa</a>
             <a href="#hakkimizda" class="nav-link" data-translate="about">Hakkımızda</a>
-            <a href="#" class="nav-link" data-translate="blog" onclick="openComingSoon(event, 'Blog')">Blog</a>
-            <a href="#" class="nav-link" data-translate="chat" onclick="openComingSoon(event, 'Chat')">Chat</a>
+            <a href="#" class="nav-link" data-translate="blog" onclick="openComingSoon(event, 'blog')">Blog</a>
+            <a href="#" class="nav-link" data-translate="chat" onclick="openComingSoon(event, 'chat')">Sohbet</a>
             <a href="#" class="nav-link lang-toggle" onclick="toggleLanguage(event)">
                 <span id="lang-tr" class="lang-active">TR</span><span class="lang-separator">/</span><span id="lang-en">EN</span>
             </a>
@@ -538,6 +557,11 @@
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer>
+        <p data-translate="footer">© 2026 Marmara Cyber. Tüm Hakları Saklıdır.</p>
+    </footer>
+
     <!-- Coming Soon Modal -->
     <div id="coming-soon-modal" class="modal-overlay">
         <div class="modal-content">
@@ -556,14 +580,15 @@
                 home: "Ana Sayfa",
                 about: "Hakkımızda",
                 blog: "Blog",
-                chat: "Chat",
+                chat: "Sohbet",
                 title: "Marmara Üniversitesi Siber Güvenlik Kulübü",
                 subtitle: "Official Landing Page — ",
                 aboutTitle: "Hakkımızda",
                 aboutText: "Marmara Üniversitesi Siber Güvenlik Kulübü, dijital güvenliğe ilgi duyan herkesi tek çatı altında toplayan bir öğrenci topluluğudur. Amacımız, siber güvenlik dünyasına adım atmak isteyen arkadaşlarımıza rehberlik etmek, halihazırda bu alanda çalışan üyelerimizle bilgi alışverişi sağlamak ve güçlü bir ağ (network) oluşturmaktır. Teknik atölyeler, sektörden profesyonellerle buluşmalar ve kendi içimizde düzenlediğimiz pratik egzersizlerle, üyelerimizin kariyer yolculuklarına sağlam bir temel atıyoruz. Öğrenmeye hevesli herkesi aramızda görmekten mutluluk duyarız!",
                 modalTitle: "Coming Soon",
                 modalText: "Görüntülemek istediğiniz <span id=\"modal-tab-name\" class=\"domain-highlight\"></span> modülü şu anda geliştirilme aşamasındadır.",
-                modalClose: "Kapat"
+                modalClose: "Kapat",
+                footer: "© 2026 Marmara Cyber. Tüm Hakları Saklıdır."
             },
             en: {
                 home: "Home",
@@ -576,7 +601,8 @@
                 aboutText: "Marmara University Cyber Security Club is a student community that gathers everyone interested in digital security under one roof. Our goal is to guide students who want to step into the world of cybersecurity, facilitate knowledge exchange with our members already working in this field, and build a strong network. Through technical workshops, meetings with industry professionals, and practical exercises we organize internally, we establish a solid foundation for our members' career journeys. We are delighted to welcome anyone who is eager to learn!",
                 modalTitle: "Coming Soon",
                 modalText: "The <span id=\"modal-tab-name\" class=\"domain-highlight\"></span> module you wish to view is currently under development.",
-                modalClose: "Close"
+                modalClose: "Close",
+                footer: "© 2026 Marmara Cyber. All Rights Reserved."
             }
         };
 
@@ -599,6 +625,16 @@
                 }
             });
 
+            // Translate active modal tab name if open
+            const modal = document.getElementById('coming-soon-modal');
+            const activeTabKey = modal.getAttribute('data-active-tab');
+            if (activeTabKey) {
+                const modalTabNameSpan = document.getElementById('modal-tab-name');
+                if (modalTabNameSpan) {
+                    modalTabNameSpan.innerText = translations[currentLang][activeTabKey];
+                }
+            }
+
             // Update Active Language Indicators
             if (currentLang === 'tr') {
                 document.getElementById('lang-tr').classList.add('lang-active');
@@ -610,20 +646,22 @@
         }
 
         // Modal Controls
-        function openComingSoon(event, tabName) {
+        function openComingSoon(event, tabKey) {
             event.preventDefault();
             const modal = document.getElementById('coming-soon-modal');
+            modal.setAttribute('data-active-tab', tabKey);
             modal.classList.add('active');
             
             // Update the tab name inside the modal span dynamically
             const modalTabNameSpan = document.getElementById('modal-tab-name');
             if (modalTabNameSpan) {
-                modalTabNameSpan.innerText = tabName;
+                modalTabNameSpan.innerText = translations[currentLang][tabKey];
             }
         }
 
         function closeComingSoon() {
             const modal = document.getElementById('coming-soon-modal');
+            modal.removeAttribute('data-active-tab');
             modal.classList.remove('active');
         }
 
