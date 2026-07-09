@@ -12,12 +12,17 @@
     <meta property="og:url" content="https://marmaracyber.com/">
     <meta property="og:title" content="Marmara Üniversitesi Siber Güvenlik Kulübü">
     <meta property="og:description" content="Marmara Üniversitesi Siber Güvenlik Kulübü (Marmara Cyber) resmi web sitesi ve doğrulama sayfası.">
+    <meta property="og:image" content="https://marmaracyber.com/assets/logo.png">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://marmaracyber.com/">
     <meta property="twitter:title" content="Marmara Üniversitesi Siber Güvenlik Kulübü">
     <meta property="twitter:description" content="Marmara Üniversitesi Siber Güvenlik Kulübü (Marmara Cyber) resmi web sitesi ve doğrulama sayfası.">
+    <meta property="twitter:image" content="https://marmaracyber.com/assets/logo.png">
+
+    <!-- Favicon Integration -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
 
     <title>Marmara Üniversitesi Siber Güvenlik Kulübü</title>
     
@@ -419,6 +424,74 @@
             50%      { background-color: var(--neon-blue); box-shadow: 0 0 8px var(--neon-blue); }
         }
 
+        /* Terminal Status Bar Styles */
+        .terminal-status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 1.5rem;
+            background: rgba(0, 0, 0, 0.45);
+            border-bottom: 1px solid rgba(0, 242, 254, 0.15);
+            border-radius: 16px 16px 0 0;
+            margin: -3.5rem -2.5rem 2.5rem -2.5rem; /* Extends past card padding */
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background-color: #ff5f56; }
+        .dot.yellow { background-color: #ffbd2e; }
+        .dot.green { background-color: #27c93f; }
+
+        .status-items {
+            display: flex;
+            gap: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .status-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #27c93f;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 6px #27c93f;
+            animation: status-pulse 2s infinite;
+        }
+
+        @keyframes status-pulse {
+            0% {
+                transform: scale(0.9);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+                box-shadow: 0 0 10px #27c93f;
+            }
+            100% {
+                transform: scale(0.9);
+                opacity: 0.6;
+            }
+        }
+
         /* Responsive Design */
         @media (max-width: 600px) {
             header {
@@ -439,6 +512,14 @@
             }
             .lang-toggle {
                 font-size: 0.75rem;
+            }
+            .terminal-status-bar {
+                margin: -2.5rem -1.5rem 2rem -1.5rem;
+                padding: 10px 1rem;
+            }
+            .status-items {
+                gap: 10px;
+                font-size: 0.65rem;
             }
             section {
                 padding-top: 90px;
@@ -527,9 +608,26 @@
             <div class="corner bottom-left"></div>
             <div class="corner bottom-right"></div>
 
+            <!-- Terminal Status Bar (Statically English for terminal authenticity) -->
+            <div class="terminal-status-bar">
+                <div class="terminal-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <div class="status-items">
+                    <span class="status-item">
+                        <span class="status-dot"></span>
+                        SYS: OPERATIONAL
+                    </span>
+                    <span class="status-item">ENC: AES-256</span>
+                    <span class="status-item">SECURE: YES</span>
+                </div>
+            </div>
+
             <h1 id="club-title" data-translate="title">Marmara Üniversitesi Siber Güvenlik Kulübü</h1>
             <p class="subtitle" id="site-subtitle">
-                <span data-translate="subtitle">Official Landing Page &mdash; </span><span class="domain-highlight">marmaracyber.com</span><span class="cursor"></span>
+                <span data-translate="subtitle">Official Landing Page &mdash; </span><span class="domain-highlight" id="typewriter-target"></span><span class="cursor"></span>
             </p>
 
             <div class="social-links">
@@ -672,6 +770,26 @@
                 closeComingSoon();
             }
         }
+
+        // Typewriter Effect for the Domain Highlight
+        function initTypewriter() {
+            const text = "marmaracyber.com";
+            const target = document.getElementById('typewriter-target');
+            if (!target) return;
+            target.textContent = '';
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    target.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, 100); // 100ms per character
+                }
+            }
+            // Start typewriter after a short delay (e.g. 500ms after card fade-in)
+            setTimeout(type, 500);
+        }
+
+        window.addEventListener('DOMContentLoaded', initTypewriter);
 
         // Scrollspy for active link indication
         const sections = document.querySelectorAll('section');
