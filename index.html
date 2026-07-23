@@ -638,6 +638,198 @@
             box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
             text-shadow: 0 0 8px var(--primary-cyan);
         }
+        /* Contact Section */
+        .contact-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 4rem;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            gap: 4rem;
+            margin-top: -1rem;
+            background: rgba(8, 9, 12, 0.6);
+            border: 1px solid rgba(0, 242, 254, 0.15);
+            border-radius: 12px;
+            padding: 3rem;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-form-container {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 0.8rem 1rem;
+            color: var(--text-primary);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+            width: 100%;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-cyan);
+            background: rgba(0, 242, 254, 0.05);
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.1);
+        }
+
+        .submit-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--primary-cyan);
+            border: 1px solid var(--primary-cyan);
+            border-radius: 6px;
+            padding: 0.8rem 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-transform: uppercase;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-cyan);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .contact-info-container {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            justify-content: center;
+        }
+
+        .contact-info-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .contact-info-item svg {
+            color: var(--primary-cyan);
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        .contact-info-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .contact-info-item p,
+        .contact-info-item a {
+            color: var(--text-secondary);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info-item a:hover {
+            color: var(--primary-cyan);
+        }
+
+        /* Toast Notifications */
+        .toast-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .toast {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Space Grotesk', sans-serif;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            transform: translateX(120%);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .toast.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .toast.success {
+            border-left: 4px solid #10b981;
+        }
+
+        .toast.error {
+            border-left: 4px solid #ef4444;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
 
         /* Responsive Design */
         @media (max-width: 850px) {
@@ -892,6 +1084,7 @@
             <a href="#hero" class="nav-link active-link" data-translate="home">Ana Sayfa</a>
             <a href="#hakkimizda" class="nav-link" data-translate="about">Hakkımızda</a>
             <a href="#ekibimiz" class="nav-link" data-translate="team">Ekibimiz</a>
+            <a href="#iletisim" class="nav-link" data-translate="contact">İletişim</a>
             <a href="#" class="nav-link lang-toggle" onclick="toggleLanguage(event)">
                 <span id="lang-tr" class="lang-active">TR</span><span class="lang-separator">/</span><span id="lang-en">EN</span>
             </a>
@@ -1041,6 +1234,73 @@
         </div>
     </section>
 
+    <!-- İletişim Section -->
+    <section id="iletisim" class="contact-section">
+        <h2 class="section-title" data-translate="contactTitle">İletişim</h2>
+        <div class="section-divider"></div>
+
+        <div class="contact-container">
+            <!-- Left Column: Form -->
+            <div class="contact-form-container">
+                <form id="contact-form" action="https://formspree.io/f/mojgkeyz" method="POST">
+                    <!-- Honeypot -->
+                    <input type="text" name="_gotcha" style="display:none" class="honeypot" tabindex="-1" autocomplete="off">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" data-translate="firstName">Ad</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName" data-translate="lastName">Soyad</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" data-translate="emailAddress">E-posta</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" data-translate="messageLabel">Mesajınız</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="submit-btn">
+                        <span data-translate="sendBtn">Gönder</span>
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Right Column: Info -->
+            <div class="contact-info-container" style="align-items: center; text-align: center; gap: 3.5rem;">
+                
+                <div data-translate="contactHeroText" style="font-size: 1.15rem; font-family: 'Space Grotesk', sans-serif; color: #f1f5f9; line-height: 1.7; max-width: 90%;">
+                    Bize istediğiniz zaman ulaşabilirsiniz.<br>Sorularınız için çekinmeyin.
+                </div>
+
+                <div class="contact-info-block">
+                    <h4 data-translate="emailLabel" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.1em; color: var(--text-primary); text-transform: uppercase;">E-posta Adresi</h4>
+                    <a href="mailto:marcybersec@proton.me" style="color: var(--text-secondary); text-decoration: none; font-size: 1.1rem; transition: color 0.3s ease; display: block;" onmouseover="this.style.color='var(--primary-cyan)'" onmouseout="this.style.color='var(--text-secondary)'">marcybersec@proton.me</a>
+                </div>
+
+                <div class="contact-info-block">
+                    <h4 data-translate="socialLabel" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.1em; color: var(--text-primary); text-transform: uppercase;">Sosyal Medya Adresleri</h4>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <a href="https://www.linkedin.com/company/marmara-%C3%BCniversitesi-siber-g%C3%BCvenlik-kul%C3%BCb%C3%BC/" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none; font-size: 1.1rem; transition: color 0.3s ease;" onmouseover="this.style.color='var(--primary-cyan)'" onmouseout="this.style.color='var(--text-secondary)'">@marmaracyber (LinkedIn)</a>
+                        <a href="https://www.instagram.com/marmarasiber.resmi/" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none; font-size: 1.1rem; transition: color 0.3s ease;" onmouseover="this.style.color='var(--primary-cyan)'" onmouseout="this.style.color='var(--text-secondary)'">@marmarasiber.resmi (Instagram)</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
     <!-- Rich Footer -->
     <footer class="rich-footer">
         <div class="footer-container">
@@ -1063,6 +1323,7 @@
                 <a href="#hero" data-translate="home">Ana Sayfa</a>
                 <a href="#hakkimizda" data-translate="about">Hakkımızda</a>
                 <a href="#ekibimiz" data-translate="team">Ekibimiz</a>
+                <a href="#iletisim" data-translate="contact">İletişim</a>
             </div>
 
             <!-- Right Column: Social & Copyright -->
@@ -1115,6 +1376,18 @@
                 compDept: "Bilgisayar Mühendisi",
                 cyberDept: "Siber Güvenlik Mühendisi",
                 aboutText: "Marmara Üniversitesi Siber Güvenlik Kulübü, dijital güvenliğe ilgi duyan herkesi tek çatı altında toplayan bir öğrenci topluluğudur. Amacımız, siber güvenlik dünyasına adım atmak isteyen arkadaşlarımıza rehberlik etmek, halihazırda bu alanda çalışan üyelerimizle bilgi alışverişi sağlamak ve güçlü bir network oluşturmaktır. Teknik atölyeler, sektörden profesyonellerle buluşmalar ve kendi içimizde düzenlediğimiz pratik egzersizlerle, üyelerimizin kariyer yolculuklarına sağlam bir temel atıyoruz. Öğrenmeye hevesli herkesi aramızda görmekten mutluluk duyarız!",
+                contact: "İletişim",
+                contactTitle: "İletişim",
+                contactHeroText: "Bize istediğiniz zaman ulaşabilirsiniz.<br>Sorularınız için çekinmeyin.",
+                firstName: "Ad",
+                lastName: "Soyad",
+                emailAddress: "E-posta",
+                messageLabel: "Mesajınız",
+                sendBtn: "Gönder",
+                emailLabel: "Mail Adresi",
+                socialLabel: "Sosyal Medya Adresleri",
+                toastSuccess: "Mesajınız başarıyla gönderildi!",
+                toastError: "Bir hata oluştu, lütfen tekrar deneyin.",
                 followUs: "Bizi Takip Edin:",
                 footerCopy: "© 2026 Marmara Cyber",
                 footerRights: "Tüm Hakları Saklıdır.",
@@ -1138,6 +1411,18 @@
                 compDept: "Computer Engineer",
                 cyberDept: "Cyber Security Engineer",
                 aboutText: "Marmara University Cyber Security Club is a student community that gathers everyone interested in digital security under one roof. Our goal is to guide students who want to step into the world of cybersecurity, facilitate knowledge exchange with our members already working in this field, and build a strong network. Through technical workshops, meetings with industry professionals, and practical exercises we organize internally, we establish a solid foundation for our members' career journeys. We are delighted to welcome anyone who is eager to learn!",
+                contact: "Contact Us",
+                contactTitle: "Contact Us",
+                contactHeroText: "If you have any further questions,<br>please don't hesitate to ask us.",
+                firstName: "First Name",
+                lastName: "Last Name",
+                emailAddress: "Email Address",
+                messageLabel: "Your Message",
+                sendBtn: "Send",
+                emailLabel: "Mail Address",
+                socialLabel: "Social Media Addresses",
+                toastSuccess: "Your message has been sent successfully!",
+                toastError: "An error occurred, please try again.",
                 followUs: "Follow Us:",
                 footerCopy: "© 2026 Marmara Cyber",
                 footerRights: "All Rights Reserved.",
@@ -1157,7 +1442,7 @@
             document.querySelectorAll('[data-translate]').forEach(element => {
                 const key = element.getAttribute('data-translate');
                 if (translations[currentLang][key]) {
-                    if (key === 'modalText') {
+                    if (key === 'modalText' || key === 'contactHeroText') {
                         element.innerHTML = translations[currentLang][key];
                     } else {
                         element.textContent = translations[currentLang][key];
@@ -1216,6 +1501,99 @@
                 }
             });
         });
+
+        // Form Submission Logic
+        const contactForm = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+
+        function showToast(message, type) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            const icon = type === 'success' 
+                ? '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>'
+                : '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>';
+            
+            toast.innerHTML = `${icon}<span>${message}</span>`;
+            container.appendChild(toast);
+            
+            // Trigger animation
+            setTimeout(() => toast.classList.add('show'), 10);
+            
+            // Remove after 5s
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 400);
+            }, 5000);
+        }
+
+        // Basic XSS Sanitization
+        function sanitizeInput(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag] || tag)
+            );
+        }
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Honeypot check
+                const honeypot = this.querySelector('input[name="_gotcha"]');
+                if (honeypot && honeypot.value !== '') {
+                    // Bot detected. Fail silently.
+                    return;
+                }
+
+                // Sanitize and collect data
+                const formData = new FormData(this);
+                const data = {};
+                for (let [key, value] of formData.entries()) {
+                    if (key !== '_gotcha') {
+                        data[key] = sanitizeInput(value.trim());
+                    }
+                }
+
+                // UI Loading state
+                const originalBtnContent = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<span style="display:inline-block; animation: spin 1s linear infinite;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg></span>';
+                submitBtn.disabled = true;
+
+                try {
+                    const response = await fetch(this.action, {
+                        method: 'POST',
+                        body: JSON.stringify(data),
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        showToast(translations[currentLang].toastSuccess, 'success');
+                        this.reset();
+                    } else {
+                        showToast(translations[currentLang].toastError, 'error');
+                    }
+                } catch (error) {
+                    showToast(translations[currentLang].toastError, 'error');
+                } finally {
+                    submitBtn.innerHTML = originalBtnContent;
+                    submitBtn.disabled = false;
+                    
+                    // Re-translate button after restoring content
+                    const btnSpan = submitBtn.querySelector('span');
+                    if (btnSpan) btnSpan.textContent = translations[currentLang].sendBtn;
+                }
+            });
+        }
     </script>
 
 </body>
