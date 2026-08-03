@@ -638,6 +638,143 @@
             box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
             text-shadow: 0 0 8px var(--primary-cyan);
         }
+        
+        /* FAQ Section */
+        .faq-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem 2rem 1.5rem;
+        }
+
+        .accordion-container {
+            width: 100%;
+            margin-top: -1rem;
+        }
+
+        .accordion-item {
+            background: rgba(8, 12, 20, 0.65);
+            border: 1px solid rgba(0, 242, 254, 0.15);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .accordion-item:hover {
+            border-color: rgba(0, 242, 254, 0.4);
+        }
+
+        .accordion-item.active {
+            border-color: var(--primary-cyan);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.25), inset 0 0 15px rgba(0, 242, 254, 0.05);
+            background: linear-gradient(135deg, rgba(12, 18, 28, 0.85), rgba(0, 242, 254, 0.05));
+        }
+
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 1.75rem;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            flex: 1;
+        }
+
+        .accordion-icon {
+            color: var(--primary-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            filter: drop-shadow(0 0 5px rgba(0, 242, 254, 0.5));
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item:hover .accordion-icon {
+            transform: scale(1.1);
+        }
+
+        .accordion-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--primary-cyan);
+            margin: 0;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 8px rgba(0, 242, 254, 0.3);
+        }
+
+        .accordion-arrow {
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .accordion-item.active .accordion-arrow {
+            transform: rotate(180deg);
+            color: var(--primary-cyan);
+            filter: drop-shadow(0 0 5px rgba(0, 242, 254, 0.6));
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, padding 0.3s ease;
+            opacity: 0;
+            padding: 0 1.75rem;
+        }
+
+        .accordion-item.active .accordion-content {
+            opacity: 1;
+            padding-bottom: 1.5rem;
+        }
+
+        .accordion-answer {
+            color: #d1d5db;
+            font-size: 0.98rem;
+            line-height: 1.7;
+            margin: 0;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .accordion-header {
+                padding: 1rem 1.25rem;
+            }
+            .accordion-title {
+                font-size: 0.95rem;
+            }
+            .accordion-header-left {
+                gap: 0.85rem;
+            }
+            .accordion-content {
+                padding: 0 1.25rem;
+            }
+            .accordion-item.active .accordion-content {
+                padding-bottom: 1.25rem;
+            }
+        }
+
         /* Contact Section */
         .contact-section {
             display: flex;
@@ -1084,6 +1221,7 @@
             <a href="#hero" class="nav-link active-link" data-translate="home">Ana Sayfa</a>
             <a href="#hakkimizda" class="nav-link" data-translate="about">Hakkımızda</a>
             <a href="#ekibimiz" class="nav-link" data-translate="team">Ekibimiz</a>
+            <a href="#sss" class="nav-link" data-translate="faq">S.S.S.</a>
             <a href="#iletisim" class="nav-link" data-translate="contact">İletişim</a>
             <a href="#" class="nav-link lang-toggle" onclick="toggleLanguage(event)">
                 <span id="lang-tr" class="lang-active">TR</span><span class="lang-separator">/</span><span id="lang-en">EN</span>
@@ -1235,6 +1373,122 @@
         </div>
     </section>
 
+    <!-- S.S.S. (FAQ) Section -->
+    <section id="sss" class="faq-section">
+        <h2 class="section-title" data-translate="faqTitle">SIKÇA SORULAN SORULAR</h2>
+        <div class="section-divider"></div>
+
+        <div class="accordion-container">
+            <!-- Item 1 (Default Open) -->
+            <div class="accordion-item active">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-header-left">
+                        <span class="accordion-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        </span>
+                        <h3 class="accordion-title" data-translate="q1">YAZILIM GEÇMİŞİM YOK, SIFIRDAN ZORLANIR MIYIM?</h3>
+                    </div>
+                    <span class="accordion-arrow">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+                    </span>
+                </div>
+                <div class="accordion-content" style="max-height: 500px;">
+                    <p class="accordion-answer" data-translate="a1">Hayır, gerekmiyor. Çoğu kişi sıfır bilgiyle geliyor ve dersler en temelden başlıyor. Marmara Siber Kulübü olarak biz pratik kısımlarda devreye girip, üst dönemler, kulüp eğitimleri ve projelerle o açığı kapatıyoruz. Beraber hallediyoruz.</p>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-header-left">
+                        <span class="accordion-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        </span>
+                        <h3 class="accordion-title" data-translate="q2">İNGİLİZCEM İYİ DEĞİL, BU BİR ENGEL Mİ?</h3>
+                    </div>
+                    <span class="accordion-arrow">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+                    </span>
+                </div>
+                <div class="accordion-content">
+                    <p class="accordion-answer" data-translate="a2">Hayır, kesinlikle engel değil! Ancak siber güvenlikte temel dille başlayıp süreç içinde İngilizce terminolojiye de kulüp etkinliklerimizde aşina olacaksınız. Kaynaklar ve dokümantasyonlar genellikle İngilizce olsa da kulüpteki Türkçe anlatımlar ve mentörlük desteğiyle bu engeli kolayca aşabilirsiniz.</p>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-header-left">
+                        <span class="accordion-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="15" x2="23" y2="15"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="15" x2="4" y2="15"></line></svg>
+                        </span>
+                        <h3 class="accordion-title" data-translate="q3">YAPAY ZEKA SİBER GÜVENLİĞİN ÖNÜNÜ KAPATIYOR MU?</h3>
+                    </div>
+                    <span class="accordion-arrow">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+                    </span>
+                </div>
+                <div class="accordion-content">
+                    <p class="accordion-answer" data-translate="a3">Tam aksine! Yapay zeka, siber güvenlik dünyasını hem tehdit hem de savunma anlamında dönüştürüyor ve alanın önemini katlayarak artırıyor. YZ destekli yeni saldırılara karşı sistemi savunan uzmanlara olan ihtiyaç her geçen gün büyüyor. Kulübümüzde de yapay zeka ve siber güvenlik entegrasyonu üzerine yeni nesil çalışmalar yapıyoruz.</p>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-header-left">
+                        <span class="accordion-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </span>
+                        <h3 class="accordion-title" data-translate="q4">KULÜP ORTAMI NASIL? YARDIM BULABİLİR MİYİM?</h3>
+                    </div>
+                    <span class="accordion-arrow">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+                    </span>
+                </div>
+                <div class="accordion-content">
+                    <p class="accordion-answer" data-translate="a4">Kulübümüz samimi, paylaşımcı ve her seviyeden üyenin birbirine destek olduğu güçlü bir aidiyet ortamına sahiptir. Discord sunucumuz, atölyelerimiz ve çalışma gruplarımız üzerinden dilediğiniz zaman üst dönemlerinize veya teknik komitelerimize sorularınızı iletebilir, ortak projeler geliştirebilirsiniz.</p>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-header-left">
+                        <span class="accordion-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg>
+                        </span>
+                        <h3 class="accordion-title" data-translate="q5">SİBER GÜVENLİĞİN GELECEĞİ NASIL? MEZUN OLUNCA İŞSİZ KALIR MIYIM?</h3>
+                    </div>
+                    <span class="accordion-arrow">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+                    </span>
+                </div>
+                <div class="accordion-content">
+                    <p class="accordion-answer" data-translate="a5">Siber güvenlik, bilişim sektörünün en kritik, en popüler ve personel açığı en yüksek alanlarından biridir. Dijitalleşme devam ettikçe siber güvenlik uzmanına duyulan ihtiyaç asla bitmez. Kulübümüz bünyesinde kendinizi geliştirip projeler ürettiğinizde iş dünyasında ciddi bir avantaj ve güçlü bir network kazanırsınız.</p>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-header-left">
+                        <span class="accordion-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        </span>
+                        <h3 class="accordion-title" data-translate="q6">BİLGİSAYAR MÜHENDİSLİĞİ İLE SİBER GÜVENLİK MÜHENDİSLİĞİ ARASINDAKİ FARK NEDİR?</h3>
+                    </div>
+                    <span class="accordion-arrow">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+                    </span>
+                </div>
+                <div class="accordion-content">
+                    <p class="accordion-answer" data-translate="a6">Bilgisayar Mühendisliği; yazılım, donanım, veri yapıları ve algoritmalar gibi çok daha geniş bir disipline odaklanır. Siber Güvenlik Mühendisliği ise ağ güvenliği, kriptografi, sızma testi, zararlı yazılım analizi ve savunma sistemleri gibi güvenlik odaklı uzmanlık derslerine derinlemesine inen spesifik bir alandır.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- İletişim Section -->
     <section id="iletisim" class="contact-section">
         <h2 class="section-title" data-translate="contactTitle">İletişim</h2>
@@ -1324,6 +1578,7 @@
                 <a href="#hero" data-translate="home">Ana Sayfa</a>
                 <a href="#hakkimizda" data-translate="about">Hakkımızda</a>
                 <a href="#ekibimiz" data-translate="team">Ekibimiz</a>
+                <a href="#sss" data-translate="faq">S.S.S.</a>
                 <a href="#iletisim" data-translate="contact">İletişim</a>
             </div>
 
@@ -1379,6 +1634,20 @@
                 aboutText: "Marmara Üniversitesi Siber Güvenlik Kulübü, dijital güvenliğe ilgi duyan herkesi tek çatı altında toplayan bir öğrenci topluluğudur. Amacımız, siber güvenlik dünyasına adım atmak isteyen arkadaşlarımıza rehberlik etmek, halihazırda bu alanda çalışan üyelerimizle bilgi alışverişi sağlamak ve güçlü bir network oluşturmaktır. Teknik atölyeler, sektörden profesyonellerle buluşmalar ve kendi içimizde düzenlediğimiz pratik egzersizlerle, üyelerimizin kariyer yolculuklarına sağlam bir temel atıyoruz. Öğrenmeye hevesli herkesi aramızda görmekten mutluluk duyarız!",
                 contact: "İletişim",
                 contactTitle: "İletişim",
+                faq: "S.S.S.",
+                faqTitle: "SIKÇA SORULAN SORULAR",
+                q1: "YAZILIM GEÇMİŞİM YOK, SIFIRDAN ZORLANIR MIYIM?",
+                a1: "Hayır, gerekmiyor. Çoğu kişi sıfır bilgiyle geliyor ve dersler en temelden başlıyor. Marmara Siber Kulübü olarak biz pratik kısımlarda devreye girip, üst dönemler, kulüp eğitimleri ve projelerle o açığı kapatıyoruz. Beraber hallediyoruz.",
+                q2: "İNGİLİZCEM İYİ DEĞİL, BU BİR ENGEL Mİ?",
+                a2: "Hayır, kesinlikle engel değil! Ancak siber güvenlikte temel dille başlayıp süreç içinde İngilizce terminolojiye de kulüp etkinliklerimizde aşina olacaksınız. Kaynaklar ve dokümantasyonlar genellikle İngilizce olsa da kulüpteki Türkçe anlatımlar ve mentörlük desteğiyle bu engeli kolayca aşabilirsiniz.",
+                q3: "YAPAY ZEKA SİBER GÜVENLİĞİN ÖNÜNÜ KAPATIYOR MU?",
+                a3: "Tam aksine! Yapay zeka, siber güvenlik dünyasını hem tehdit hem de savunma anlamında dönüştürüyor ve alanın önemini katlayarak artırıyor. YZ destekli yeni saldırılara karşı sistemi savunan uzmanlara olan ihtiyaç her geçen gün büyüyor. Kulübümüzde de yapay zeka ve siber güvenlik entegrasyonu üzerine yeni nesil çalışmalar yapıyoruz.",
+                q4: "KULÜP ORTAMI NASIL? YARDIM BULABİLİR MİYİM?",
+                a4: "Kulübümüz samimi, paylaşımcı ve her seviyeden üyenin birbirine destek olduğu güçlü bir aidiyet ortamına sahiptir. Discord sunucumuz, atölyelerimiz ve çalışma gruplarımız üzerinden dilediğiniz zaman üst dönemlerinize veya teknik komitelerimize sorularınızı iletebilir, ortak projeler geliştirebilirsiniz.",
+                q5: "SİBER GÜVENLİĞİN GELECEĞİ NASIL? MEZUN OLUNCA İŞSİZ KALIR MIYIM?",
+                a5: "Siber güvenlik, bilişim sektörünün en kritik, en popüler ve personel açığı en yüksek alanlarından biridir. Dijitalleşme devam ettikçe siber güvenlik uzmanına duyulan ihtiyaç asla bitmez. Kulübümüz bünyesinde kendinizi geliştirip projeler ürettiğinizde iş dünyasında ciddi bir avantaj ve güçlü bir network kazanırsınız.",
+                q6: "BİLGİSAYAR MÜHENDİSLİĞİ İLE SİBER GÜVENLİK MÜHENDİSLİĞİ ARASINDAKİ FARK NEDİR?",
+                a6: "Bilgisayar Mühendisliği; yazılım, donanım, veri yapıları ve algoritmalar gibi çok daha geniş bir disipline odaklanır. Siber Güvenlik Mühendisliği ise ağ güvenliği, kriptografi, sızma testi, zararlı yazılım analizi ve savunma sistemleri gibi güvenlik odaklı uzmanlık derslerine derinlemesine inen spesifik bir alandır.",
                 contactHeroText: "Bize istediğiniz zaman ulaşabilirsiniz.<br>Sorularınız için çekinmeyin.",
                 firstName: "Ad",
                 lastName: "Soyad",
@@ -1414,6 +1683,20 @@
                 aboutText: "Marmara University Cyber Security Club is a student community that gathers everyone interested in digital security under one roof. Our goal is to guide students who want to step into the world of cybersecurity, facilitate knowledge exchange with our members already working in this field, and build a strong network. Through technical workshops, meetings with industry professionals, and practical exercises we organize internally, we establish a solid foundation for our members' career journeys. We are delighted to welcome anyone who is eager to learn!",
                 contact: "Contact Us",
                 contactTitle: "Contact Us",
+                faq: "FAQ",
+                faqTitle: "FREQUENTLY ASKED QUESTIONS",
+                q1: "I HAVE NO CODING BACKGROUND, WILL I STRUGGLE?",
+                a1: "No, you don't need any prior knowledge. Many students join with zero background, and university classes start from scratch. As Marmara Cyber Club, we step in for practical guidance—closing any gaps through mentorship, peer workshops, and projects. We achieve this together.",
+                q2: "MY ENGLISH IS NOT INCREDIBLE, IS THIS AN OBSTACLE?",
+                a2: "No, absolutely not! While cybersecurity relies on English documentation and technical terms, our club activities explain concepts in clear Turkish and gradually familiarize you with the jargon. With peer mentoring and collaborative study, language won't hold you back.",
+                q3: "WILL ARTIFICIAL INTELLIGENCE REPLACE CYBERSECURITY JOBS?",
+                a3: "On the contrary! AI is transforming both threats and defense mechanisms, multiplying the critical value of cybersecurity engineers. As AI-driven attacks proliferate, the industry desperately needs experts capable of securing AI and using cyber defense systems. In our club, we actively explore AI and security integration.",
+                q4: "WHAT IS THE CLUB ATMOSPHERE LIKE? CAN I FIND HELP?",
+                a4: "Our club offers a welcoming, cooperative, and supportive community for students of all skill levels. Through our Discord server, active study groups, and hands-on workshops, you can always ask questions to senior members and committee leaders, or team up on exciting projects.",
+                q5: "WHAT IS THE FUTURE OF CYBERSECURITY? ARE THERE JOB OPPORTUNITIES?",
+                a5: "Cybersecurity remains one of the most vital, rapidly growing fields in the tech industry, suffering from a worldwide talent deficit. As digitalization expands, the demand for skilled security experts only climbs. Actively participating in our club gives you a powerful technical edge and network.",
+                q6: "WHAT IS THE DIFFERENCE BETWEEN COMPUTER ENGINEERING AND CYBERSECURITY ENGINEERING?",
+                a6: "Computer Engineering covers a broad IT foundation including general software development, hardware design, and traditional systems. Cybersecurity Engineering is a highly specialized discipline focused deeply on network security, penetration testing, applied cryptography, malware analysis, and offensive/defensive architectures.",
                 contactHeroText: "If you have any further questions,<br>please don't hesitate to ask us.",
                 firstName: "First Name",
                 lastName: "Last Name",
@@ -1594,6 +1877,30 @@
                     if (btnSpan) btnSpan.textContent = translations[currentLang].sendBtn;
                 }
             });
+        }
+
+        // Accordion Toggle Logic
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const content = item.querySelector('.accordion-content');
+            const isActive = item.classList.contains('active');
+
+            // Close other items
+            document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                    const otherContent = otherItem.querySelector('.accordion-content');
+                    if (otherContent) otherContent.style.maxHeight = null;
+                }
+            });
+
+            if (isActive) {
+                item.classList.remove('active');
+                content.style.maxHeight = null;
+            } else {
+                item.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
         }
     </script>
 
