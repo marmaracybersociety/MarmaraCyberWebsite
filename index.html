@@ -783,7 +783,8 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding-top: 4rem;
+            padding: 4rem 1.5rem 0 1.5rem;
+            box-sizing: border-box;
         }
 
         .contact-container {
@@ -799,20 +800,26 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
         }
 
         .contact-form-container {
-            flex: 1;
-            min-width: 300px;
+            flex: 1 1 350px;
+            min-width: 0;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .form-row {
             display: flex;
             gap: 1.5rem;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .form-row .form-group {
             flex: 1;
+            min-width: 0;
         }
 
         .form-group {
@@ -820,6 +827,8 @@
             display: flex;
             flex-direction: column;
             text-align: left;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .form-group label {
@@ -841,6 +850,12 @@
             transition: all 0.3s ease;
             outline: none;
             width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            resize: vertical;
         }
 
         .form-group input:focus,
@@ -867,6 +882,7 @@
             transition: all 0.3s ease;
             width: 100%;
             text-transform: uppercase;
+            box-sizing: border-box;
         }
 
         .submit-btn:hover {
@@ -881,46 +897,68 @@
         }
 
         .contact-info-container {
-            flex: 1;
-            min-width: 300px;
+            flex: 1 1 320px;
+            min-width: 0;
+            width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 2.5rem;
+            gap: 3.5rem;
             justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-sizing: border-box;
         }
 
-        .contact-info-item {
-            display: flex;
-            gap: 1.5rem;
-            align-items: flex-start;
-            text-align: left;
-        }
-
-        .contact-info-item svg {
-            color: var(--primary-cyan);
-            flex-shrink: 0;
-            margin-top: 0.2rem;
-        }
-
-        .contact-info-item h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-
-        .contact-info-item p,
-        .contact-info-item a {
-            color: var(--text-secondary);
+        .contact-hero-text {
+            font-size: 1.15rem;
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            text-decoration: none;
-            transition: color 0.3s ease;
+            color: #f1f5f9;
+            line-height: 1.7;
+            max-width: 90%;
+            word-wrap: break-word;
         }
 
-        .contact-info-item a:hover {
+        .contact-info-block {
+            width: 100%;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .contact-info-block h4 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+
+        .contact-info-block a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            display: inline-block;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+        }
+
+        .contact-info-block a:hover {
             color: var(--primary-cyan);
+        }
+
+        .contact-social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            align-items: center;
         }
 
         /* Toast Notifications */
@@ -970,6 +1008,18 @@
 
         /* Responsive Design */
         @media (max-width: 850px) {
+            .contact-container {
+                gap: 3rem;
+                padding: 2.5rem 2rem;
+            }
+            .contact-form-container,
+            .contact-info-container {
+                flex: 1 1 100%;
+                width: 100%;
+            }
+            .contact-info-container {
+                gap: 2.5rem;
+            }
             .team-hierarchy {
                 flex-direction: column;
                 align-items: center;
@@ -1039,6 +1089,36 @@
             .about-text {
                 font-size: 0.95rem;
             }
+            .contact-section {
+                padding: 3rem 1rem 0 1rem;
+            }
+            .contact-container {
+                gap: 2.25rem;
+                padding: 1.5rem 1.25rem;
+                border-radius: 10px;
+            }
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            .form-group {
+                margin-bottom: 1.25rem;
+            }
+            .contact-info-container {
+                gap: 2rem;
+            }
+            .contact-hero-text {
+                font-size: 1.05rem;
+                max-width: 100%;
+            }
+            .contact-info-block h4 {
+                font-size: 1.15rem;
+                letter-spacing: 0.05em;
+                margin-bottom: 0.6rem;
+            }
+            .contact-info-block a {
+                font-size: 0.95rem;
+            }
             h1 {
                 font-size: 1.8rem;
             }
@@ -1048,6 +1128,21 @@
                 gap: 4px;
                 text-align: center;
             }
+        }
+        @media (max-width: 400px) {
+            .contact-section {
+                padding: 2.5rem 0.75rem 0 0.75rem;
+            }
+            .contact-container {
+                padding: 1.25rem 0.85rem;
+                gap: 1.75rem;
+            }
+            .submit-btn {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.9rem;
+            }
+        }
+        @media (max-width: 600px) {
             .cursor {
                 display: none;
             }
@@ -1530,22 +1625,22 @@
             </div>
 
             <!-- Right Column: Info -->
-            <div class="contact-info-container" style="align-items: center; text-align: center; gap: 3.5rem;">
+            <div class="contact-info-container">
                 
-                <div data-translate="contactHeroText" style="font-size: 1.15rem; font-family: 'Space Grotesk', sans-serif; color: #f1f5f9; line-height: 1.7; max-width: 90%;">
+                <div data-translate="contactHeroText" class="contact-hero-text">
                     Bize istediğiniz zaman ulaşabilirsiniz.<br>Sorularınız için çekinmeyin.
                 </div>
 
                 <div class="contact-info-block">
-                    <h4 data-translate="emailLabel" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.1em; color: var(--text-primary); text-transform: uppercase;">E-posta Adresi</h4>
-                    <a href="mailto:marcybersec@proton.me" style="color: var(--text-secondary); text-decoration: none; font-size: 1.1rem; transition: color 0.3s ease; display: block;" onmouseover="this.style.color='var(--primary-cyan)'" onmouseout="this.style.color='var(--text-secondary)'">marcybersec@proton.me</a>
+                    <h4 data-translate="emailLabel">E-posta Adresi</h4>
+                    <a href="mailto:marcybersec@proton.me">marcybersec@proton.me</a>
                 </div>
 
                 <div class="contact-info-block">
-                    <h4 data-translate="socialLabel" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.1em; color: var(--text-primary); text-transform: uppercase;">Sosyal Medya Adresleri</h4>
-                    <div style="display: flex; flex-direction: column; gap: 1rem;">
-                        <a href="https://www.linkedin.com/company/marmara-%C3%BCniversitesi-siber-g%C3%BCvenlik-kul%C3%BCb%C3%BC/" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none; font-size: 1.1rem; transition: color 0.3s ease;" onmouseover="this.style.color='var(--primary-cyan)'" onmouseout="this.style.color='var(--text-secondary)'">@marmaracyber (LinkedIn)</a>
-                        <a href="https://www.instagram.com/marmarasiber.resmi/" target="_blank" rel="noopener noreferrer" style="color: var(--text-secondary); text-decoration: none; font-size: 1.1rem; transition: color 0.3s ease;" onmouseover="this.style.color='var(--primary-cyan)'" onmouseout="this.style.color='var(--text-secondary)'">@marmarasiber.resmi (Instagram)</a>
+                    <h4 data-translate="socialLabel">Sosyal Medya Adresleri</h4>
+                    <div class="contact-social-links">
+                        <a href="https://www.linkedin.com/company/marmara-%C3%BCniversitesi-siber-g%C3%BCvenlik-kul%C3%BCb%C3%BC/" target="_blank" rel="noopener noreferrer">@marmaracyber (LinkedIn)</a>
+                        <a href="https://www.instagram.com/marmarasiber.resmi/" target="_blank" rel="noopener noreferrer">@marmarasiber.resmi (Instagram)</a>
                     </div>
                 </div>
 
